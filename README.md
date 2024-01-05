@@ -8,6 +8,8 @@
      alt="Albuquerque, New Mexico">
     <figcaption>C++ LINGUAGGIO, LIBRERIA STANDARD, PRINCIPI DI PROGRAMMAZIONE</figcaption>
 </figure>
+<a href="https://www.hoepli.it/libro/c-linguaggio-libreria-standard-principi-di-programmazione/9788865184486.html" target="_blank">Fonte</a>
+
 
 
 

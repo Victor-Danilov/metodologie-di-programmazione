@@ -2,10 +2,13 @@
 # metodologie-di-programmazione
 
 ### Materiale al corso di Metodologie di Programmazione in C++ all'Universita' di Parma
-![sda](/asserts/images/stroustrup.jpg)
-<img src="image.png" width="200" height="100">
+- Libro consigliato
 <figure>
-    <img src="/assets/images/stroustrup.jpg"
-         alt="C++ LINGUAGGIO, LIBRERIA STANDARD, PRINCIPI DI PROGRAMMAZIONE">
+    <img src="./asserts/images/stroutstup.jpg"
+     alt="Albuquerque, New Mexico">
+    <figcaption>C++ LINGUAGGIO, LIBRERIA STANDARD, PRINCIPI DI PROGRAMMAZIONE</figcaption>
 </figure>
+
+
+
 

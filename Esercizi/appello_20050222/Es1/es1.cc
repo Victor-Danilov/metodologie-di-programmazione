@@ -25,11 +25,6 @@ struct S {
     private:
         void foo(int);
 };
-struct T : public S { void foo(char); };
-T t; // tipo statico e dinamico coincidono (T)
-t.foo(5);
-// la ricerca inizia nello scope di T; la funzione S::foo
-// non va in overloading, perché viene nascosta (hiding);
 
 int test()
 {

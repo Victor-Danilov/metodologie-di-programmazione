@@ -21,11 +21,6 @@ void g(T t, double d);          // funzione #7
 template <typename T>
 void g(T t1, T t2);             // funzione #8
 
-struct S { 
-    private:
-        void foo(int);
-};
-
 int test()
 {
     f('a');   // chiamata #1
@@ -51,15 +46,15 @@ int test()
 
 /* 
     #1:  candidate: 1,2 utilizzabile: 1,2 migliore: 1
-    #2:  candidate: 1,2 utilizzabile: 1,2 migliore:  
-    #3:  candidate:  utilizzabile:  migliore:
-    #4:  candidate:  utilizzabile:  migliore:
-    #5:  candidate:  utilizzabile:  migliore:
-    #6:  candidate:  utilizzabile:  migliore:
-    #7:  candidate:  utilizzabile:  migliore:
-    #8:  candidate:  utilizzabile:  migliore:
-    #9:  candidate:  utilizzabile:  migliore:
-    #10: candidate:  utilizzabile:  migliore:
-    #11: candidate:  utilizzabile:  migliore:
-    #12: candidate:  utilizzabile:  migliore:
+    #2:  candidate: 1,2 utilizzabile: 1,2 migliore: 1
+    #3:  candidate: 2 utilizzabile: 2  migliore: 2
+    #4:  candidate: 3 utilizzabile: 3 migliore: 3
+    #5:  candidate: 4 utilizzabile: 4 migliore: 4
+    #6:  candidate: 5,6 utilizzabile: 5,6 migliore: 5
+    #7:  candidate: 4 utilizzabile: 4 migliore: 4
+    #8:  candidate: 4,6 utilizzabile: 4,6 migliore: 6
+    #9:  candidate: 7 utilizzabile: 7 migliore: 7
+    #10: candidate: 7,8 utilizzabile: 7,8 migliore: 8
+    #11: candidate: 7,8 utilizzabile: 7 migliore: 7
+    #12: candidate: 7,8 utilizzabile: 7,8 migliore: 7
 */

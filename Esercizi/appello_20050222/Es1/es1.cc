@@ -1,3 +1,8 @@
+/*
+    Per ognuna delle seguenti chiamate, dire se la risoluzione dell’overloading va a buon fine e, nel caso,
+    indicare quale funzione viene effettivamente invocata.
+*/
+
 void f(const char *s);          // funzione #1
 
 template <typename T>

@@ -2,6 +2,9 @@
     Indicare l’output prodotto dal seguente programma.
 */
 
+/*
+    Aggiungo stampe sui distruttori per capire il loro percorso di vita
+*/
 
 #include <iostream>
 class ZooAnimal
@@ -15,7 +18,7 @@ class ZooAnimal
     {
         std::cout << "ZooAnimal::print" << std::endl;
     }
-    virtual ~ZooAnimal() {}
+    virtual ~ZooAnimal() {std::cout<<"Destructor ZooAnimal"<<std::endl;}
 };
 
 class Bear : virtual public ZooAnimal
@@ -29,7 +32,7 @@ class Bear : virtual public ZooAnimal
     {
         std::cout << "Bear::print" << std::endl;
     }
-    virtual ~Bear() {}
+    virtual ~Bear() {std::cout<<"Destructor Bear"<<std::endl;}
 };
 
 class Raccoon : virtual public ZooAnimal
@@ -39,7 +42,7 @@ class Raccoon : virtual public ZooAnimal
     {
         std::cout << "Constructor Raccoon" << std::endl;
     }
-    virtual ~Raccoon() {}
+    virtual ~Raccoon() {std::cout<<"Destructor Raccoon"<<std::endl;}
 };
 
 class Endangered
@@ -53,10 +56,10 @@ class Endangered
     {
         std::cout << "Endangered::print" << std::endl;
     }
-    virtual ~Endangered() {}
+    virtual ~Endangered() {std::cout<<"Destructor Endangered"<<std::endl;}
 };
 
-class Panda : public Endangered, public Raccoon, public Bear // il primo virtual ha la precedenza
+class Panda : public Endangered, public Raccoon, public Bear  // il primo virtual ha la precedenza
 {
     public:
     Panda()
@@ -67,24 +70,32 @@ class Panda : public Endangered, public Raccoon, public Bear // il primo virtual
     {
         std::cout << "Panda::print" << std::endl;
     }
-    virtual ~Panda() {}
+    virtual ~Panda() {std::cout<<"Destructor Panda"<<std::endl;}
 };
 
 int main()
 {
     Panda ying_yang;
-    ying_yang.print();
-    // Bear b = ying_yang;
-    // b.print();
+    ying_yang.print();                              // Panda::print
+    Bear b = ying_yang;
+    b.print();                                      // Bear::print
     ZooAnimal *pz = &ying_yang;
-    pz->print();
-    Endangered &re = ying_yang;
-    re.print();
+    pz->print();                                    // Panda::print
+    Endangered &re = ying_yang;                     
+    re.print();                                     // Endangered::print
     return 0;
 }
 
 /*
-    OUTPUT sbaglaito
+    NOTE:
+    - Una volta creato l'oggetto con il costruttore questo non viene ricreato
+    - L'ordine di distruzione avviene in base alla Ereditarieta'
+        Esempio:    Panda quando viene creato eredita da Endangered, Raccoon e Bear,
+                    è importante notare che il costruttore virtuale più derivato (ZooAnimal) viene chiamato prima degli altri
+*/
+
+/*
+    OUTPUT sbagliato first try
     Constructor Endangered
     Constructor ZooAnimal
     Constructor Bear
@@ -98,5 +109,63 @@ int main()
     Panda::print
     Constructor Endangered
     Panda::print
-
+    ----------------------------------------second attempt
+    Constructor ZooAnimal
+    Constructor Endangered
+    Constructor Raccoon
+        Constructor ZooAnimal? non lo ricostruisce perche' gia' costruito nella riga 102
+    Constructor Bear
+    Constructor Panda
+    Panda::print
+    Constructor ZooAnimal
+    Panda::print
+    Constructor Endangered
+    Endangered::print
+    ----------------------------------------third attempt
+    Constructor ZooAnimal
+    Constructor Endangered
+    Constructor Raccoon
+    Constructor Bear
+    Constructor Panda
+    Panda::print
+    Bear::print
+    Panda::print
+        Constructor Endangered?
+    Endangered::print
+    ----------------------------------------first attempt with destructor cout
+    Constructor ZooAnimal   : ordine di distruzione; ZooAnimal
+    Constructor Endangered  : ordine di distruzione; Endangered
+    Constructor Raccoon     : ordine di distruzione; Raccoon, ZooAnimal
+    Constructor Bear        : ordine di distruzione; Bear, ZooAnimal
+    Constructor Panda       : la prima distruzione comincia con Panda che e' un Bear che e' un ZooAnimal, quindi ordine di distruzione Bear, ZooAnimal, Panda
+    Panda::print
+    Bear::print
+    Panda::print
+    Endangered::print
+    Destructor Bear
+    Destructor ZooAnimal
+    Destructor Panda
+    Destructor Bear
+        Destructor ZooAnimal? questo non entra in funzione a causa della distruzione precedente di Bear ZooAnimal Panda riga 143
+    Destructor Raccoon
+        Destructor ZooAnimal?
+    Destructor Endangered
+    Destructor ZooAnimal
+    ----------------------------------------second attempt with destructor cout
+    Constructor ZooAnimal
+    Constructor Endangered
+    Constructor Raccoon
+    Constructor Bear
+    Constructor Panda
+    Panda::print
+    Bear::print
+    Panda::print
+    Endangered::print
+    Destructor Bear
+    Destructor ZooAnimal
+    Destructor Panda
+    Destructor Bear
+    Destructor Raccoon
+    Destructor Endangered
+    Destructor ZooAnimal
 */

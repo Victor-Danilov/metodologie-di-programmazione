@@ -1,5 +1,5 @@
 
-###Domande a risposta aperta
+### Domande a risposta aperta
 
 1. Fornire un esempio di violazione della ODR (One Definition Rule) che genera un errore diagnosticabile in fase di compilazione in senso stretto (cioe' prima della fase di collegamento).
 2. Fornire un esempio di chiamata di funzione nella quale si applica una conversione implicita definita dall'utente (senza usare tipi definiti nella libreria standard).
@@ -10,6 +10,6 @@
 7. Fornire un semplice esempio di violazione del principio DIP (Dependency Inversion Principle), spiegando brevemente in cosa consiste la violazione.
 8. Spiegare brevemente la differenza esistente tra la istanziazione e la specializzaziozne di un
    
-####Risposte
+#### Risposte
 
 1. 

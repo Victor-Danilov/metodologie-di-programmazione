@@ -19,8 +19,15 @@ int main(){
     N::foo(42, 3.14);                   // chiamata B
     using namespace N;
     foo(4.14, 42);                      // chiamata C
+    /*
+        Cerco la foo, se non la trovo il compilatore la cerchera'
+        nel namespace N, se la funzione foo viene trovata non entra nel namespace N
+    */
     using N::foo;
     foo(42, 3.14);                      // chiamata D
+    /*
+        Qui diciamo che vogliamo le funzioni foo() del namespace N
+    */
 }
 // ---------------------------------------------------------------------------
 /*
@@ -30,6 +37,6 @@ int main(){
 
     A: cand: 3     utli: 3     migl: 3
     B: cand: 1,2   utli: 1,2   migl: 1
-    C: cand: 1,2,3 utli: 1,2,3 migl: 2
+    C: cand: 3     utli: 3     migl: 3
     D: cand: 1,2   utli: 1,2   migl: 1
 */

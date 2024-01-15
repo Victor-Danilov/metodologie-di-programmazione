@@ -1,3 +1,12 @@
+#include<memory>
+
+class Res{
+    public:
+    Res();
+};
+
+void do_task(const int& a, const int& b){}
+
 /*
     Il codice seguente contiene errori inerenti la corretta gestione delle risorse.
     Individuare almeno un problema, indicando con precisione la sequenza di eventi che
@@ -15,7 +24,7 @@ void job(){
         do_task(r1, r2);
     }catch(...){ // qui abbiamo il secondo problema, se non lancio nessuna eccezione non entro in catch e non rilascio le risorse
         delete res1;
-        delete res2; // la delete deve riferisi al letterale non al nome quind r2 non res2
+        delete res2; // la delete deve riferirsi al letterale non al nome quind r2 non res2
         throw;
     }
 }

@@ -32,7 +32,7 @@ int main(){
     ND::foo(1.0);   // Chiamata E
     bar();          // Chiamata F
     bar(c);         // Chiamata G
-    bar(c, d);      // Chiamata H
+    bar(c, d);      // Chiamata H : ambiguita' (risoluzione: modificare chiamata)
     zen(c);         // Chiamata I
 }
 //---------------------------------------------------------------------
@@ -51,6 +51,6 @@ int main(){
     E:: cand: 5     util: 5   migl: 5
     F:: cand: 0     util: 0   migl: 0 errore di compilazione perche' bar non e' visibile
     G:: cand: 3     util: 3   migl: 3
-    H:: cand: 3,6   util:  migl:
-    I:: cand: util: migl:
+    H:: cand: 3,6   util: 3,6 migl: ambiguo
+    I:: cand: 4     util: 4   migl: 4 
 */

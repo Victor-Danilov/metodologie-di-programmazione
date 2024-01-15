@@ -1,6 +1,5 @@
 class Costante {
 public:
-    static double pi;
-    static double e;
-
+    virtual double pi()=0;
+    virtual double e()=0;
 };

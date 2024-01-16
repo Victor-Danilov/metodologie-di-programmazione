@@ -3,7 +3,8 @@
 
 ### Materiale al corso di Metodologie di Programmazione in C++ all'Universita' di Parma
 - [Appunti](./Appunti_lezione_Metodologie.pdf)
-- Libro consigliato
+> [!TIP]
+> Libro consigliato
 <figure>
     <img src="./assets/images/stroutstrup.jpg"
      alt="Albuquerque, New Mexico">
@@ -12,7 +13,6 @@
                   Quarta edizione, Pearson, 2015.
     </figcaption>
 </figure>
-<a href="https://www.hoepli.it/libro/c-linguaggio-libreria-standard-principi-di-programmazione/9788865184486.html" target="_blank">Acquista qui</a>
 
 #### Argomenti principali da studiare
 

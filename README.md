@@ -13,7 +13,6 @@
                   Quarta edizione, Pearson, 2015.
     </figcaption>
 </figure>
-<a href="https://www.hoepli.it/libro/c-linguaggio-libreria-standard-principi-di-programmazione/9788865184486.html" target="_blank">Acquista qui</a>
 
 #### Argomenti principali da studiare
 

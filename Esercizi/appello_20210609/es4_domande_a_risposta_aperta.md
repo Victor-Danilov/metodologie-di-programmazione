@@ -1,6 +1,9 @@
 
 ### Domande a risposta aperta
 
+> [!NOTE]
+> Riferimenti ai paragrafi di Stroustrup quarta edizione
+
 1. Fornire un esempio di violazione della ODR (One Definition Rule) che genera un errore diagnosticabile in fase di compilazione in senso stretto (cioe' prima della fase di collegamento).
 2. Fornire un esempio di chiamata di funzione nella quale si applica una conversione implicita definita dall'utente (senza usare tipi definiti nella libreria standard).
 3. Durante una sessione di debugging, per una specifica invocazione di un metodo di una classe si osserva che la postcondizione e' violata, mentre la proprieta' invariante e' sempre soddisfatta; il programmatore ipotizza che l'errore sia nell'implementazione del metodo. Sotto quali condizioni tale ipotesi e' corretta? (<font color="red">Studiare i contratti</font>)
@@ -32,8 +35,5 @@
         foo("pippo"); // esempio di conversione implicita definita da STL
         //...
     }
-3. Per std::list non abbiamo il metodo `[]` per accedere a un elemento qualsiasi della lista ed e' possibile fare sia la push back che la push front, mentre nei std::vector abbiamo il metodo `[]` per accedere a un elemento qualsiasi e per aggiungere elemento possiamo fare solo al push back.
-4. 
-
-> [!NOTE]
-> Riferimenti ai paragrafi di Stroustrup quarta edizione
+3. 
+4. Per il contenitore std::vector abbiamo il metodo `[]` per accedere a un elemento qualsiasi della lista ed e' possibile fare sia la push back cioe' aggiungere elementi solo alla fine della sequenza. Mentre con std::list per accedere ad un elemento della lista lo dobbiamo "raggiungere" scorrendo tutta la lista, il che e' poco efficiente, ma d'altro canto si possono aggiungere elementi sia all'inizio della lista (push_front) che alla fine (push_back).

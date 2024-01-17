@@ -35,5 +35,11 @@
         foo("pippo"); // esempio di conversione implicita definita da STL
         //...
     }
-3. 
+3. Se la postcondizione e' violata significa che anche la precondizione e' violata, se l’utente non soddisfa una precondizione l’implementatore non ha alcun obbligo.
 4. Per il contenitore std::vector abbiamo il metodo `[]` per accedere a un elemento qualsiasi della lista ed e' possibile fare sia la push back cioe' aggiungere elementi solo alla fine della sequenza. Mentre con std::list per accedere ad un elemento della lista lo dobbiamo "raggiungere" scorrendo tutta la lista, il che e' poco efficiente, ma d'altro canto si possono aggiungere elementi sia all'inizio della lista (push_front) che alla fine (push_back).
+5. Il tipo di valore std::map<K, M> e' std::pair<K, M> ma con questo abbiamo un problema, che possiamo modificare il valore mappato e anche la chiave. Il problema con la modifica della chiave e' che rompo l'invariante della classe. Quindi dentro alla mappa ci sara' scritto qualcosa del tipo;
+   ```c++
+   using value_type = std::pair<const K, M>;
+   ```
+   Per modificare la chiave devo togliere la coppia dalla mappa, la elimino e la reinserisco con la chiave modificata.
+6. 

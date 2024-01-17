@@ -71,3 +71,21 @@
         // ...
     }
    ```
+7. Nel codice utente se si usa una classe concreta,si viola il principio DIP quando quella ha delle dipendenze verso il basso, se viene previsto che questa dovra' avere flessibilita' in futuro.  La cosa giusta sarebbe di creare un'interfaccia astratta in modo che il codice utente dipenda da questa quindi dipendenza verso l'alto.
+8. L'istanziazione genera una versione specifica della funzione o classe template per il tipo di dati specificato, la specializzazione di un template offre la possibilita' di fornire un'implementazione specifica per un tipo di dati particolare. La specializzazione consente di definire un comportamento personalizzato per il template quando viene utilizzato con un certo tipo.
+```c++
+    template<typename T>
+    const T& min(const T& a, const T& b){
+        return (a<b) ? a : b;
+    }
+
+    template<>
+    const const char*& min(const char* const& a, const char* const& b){
+        return; // diversa
+    }
+
+    void pippo(){
+        auto a = min(4, 7);
+        auto b = min("aaa", "zzz");
+    }
+```

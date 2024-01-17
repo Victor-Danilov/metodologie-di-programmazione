@@ -42,4 +42,32 @@
    using value_type = std::pair<const K, M>;
    ```
    Per modificare la chiave devo togliere la coppia dalla mappa, la elimino e la reinserisco con la chiave modificata.
-6. 
+6. Con gli iteratori bidirezionali possiamo usare solo gli operatori di confronto `==` e `!=`, mentre gli iteratori random access possono usare gli operatori di:
+   1.  **addizione `(+)` e sottrazione `(-)`**: quindi si possono spostare avanti o indietro nella sequenza di un numero specificato di posizioni.
+   ```c++
+    std::vector<int> myVector = {1, 2, 3, 4, 5};
+    std::vector<int>::iterator iter = myVector.begin();
+
+    // Gli iteratori random access supportano l'operatore di addizione
+    std::vector<int>::iterator nuovoIter = iter + 2;
+   ```
+   2. **differenza `(-)`**: consentono di calcolare la differenza tra due iteratori, restituendo il numero di posizioni tra di essi.
+   ```c++
+    std::vector<int> myVector = {1, 2, 3, 4, 5};
+    std::vector<int>::iterator iter1 = myVector.begin();
+    std::vector<int>::iterator iter2 = myVector.begin() + 3;
+
+    // Gli iteratori random access supportano l'operatore di differenza
+    int differenza = iter2 - iter1;
+   ```
+   3. **confronto (`<`,`<=`,`>`,`>=`)**: gli iteratori random access possono essere confrontati tra loro utilizzando gli operatori di confronto per determinare la relazione tra le posizioni nella sequenza.
+   ```c++
+    std::vector<int> myVector = {1, 2, 3, 4, 5};
+    std::vector<int>::iterator iter1 = myVector.begin();
+    std::vector<int>::iterator iter2 = myVector.begin() + 3;
+
+    // Gli iteratori random access supportano gli operatori di confronto
+    if (iter1 < iter2) {
+        // ...
+    }
+   ```

@@ -36,6 +36,12 @@ int main(){
     rb_c.g(1);
     cout << "=== 2 ===" << endl;
     static_cast<A *>(&b)->f(1.2);
+    /*
+        '&b': Ottiene l'indirizzo di B denominato b
+        'static_cast<A *>(&b)': Esegue un cast statico di tipo, convertendo l'indirizzo di b a un puntatore di tipo A*.
+            Questo e' possibile poiche' B e' una classe derivata pubblicamente da A, quindi un puntatore a B puo' essere convertito a un puntatore
+            a A senza problemi,
+    */
     static_cast<A *>(&c)->f(1);
     static_cast<B *>(&c)->g(1.2);
     cout << "=== 3 ===" << endl;
@@ -48,8 +54,32 @@ int main(){
     Risoluzione
     ___________
 
+    Costruzione A
+    Costruzione B
+    Costruzione C
+
     === 1 ===
     B::f(int)
     B::g(int)
-    
+    C::f(int) const :: sbagliata
+    C::g(int)
+    === 2 ===
+    A::f(double)    :: entrambe le f di A e B sono virtuale e il compilatore sceglie quella non const
+    B::f(int)       :: partendo da C una f const, andando in su da B abbiamo un override della A quindi viene scelta la f di B
+    C::g(int)
+    === 3 ===
+    B::f(int)
+    C::g(int)
+    === 4 ===
+
+    // distruzione C
+    Destructor C::~C()
+    Destructor B::~B()
+    Destructor A::~A()
+
+    // distruzione B
+    Destructor B::~B()
+    Destructor A::~A()
+
+
 */

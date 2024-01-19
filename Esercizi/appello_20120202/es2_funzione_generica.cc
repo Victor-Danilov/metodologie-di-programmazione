@@ -8,17 +8,18 @@
 #include<iostream>
 #include<iterator>
 
+
 template<typename Iter, typename Pred>
-int count_if(Iter first, Iter last, Pred pred){
-    int count;
+typename std::iterator_traits<Iter>::difference_type
+    count_if(Iter first, Iter last, Pred pred)
+{
+    typename std::iterator_traits<Iter>::difference_type count=0;
     for(; first!=last; ++first){
-        if(pred) ++count;
+        if(pred(*first)){
+            ++count;
+        }
     }
     return count;
-}
-
-bool ten(const std::vector<std::string>& s){
-    return (s.size()>=10) ? true : false;
 }
 
 /*
@@ -28,15 +29,19 @@ bool ten(const std::vector<std::string>& s){
 */
 
 int main(){
+    std::vector<std::string> v;
+    std::string input;
 
-    const std::vector<std::string> v{
-        "1.dsadsad",
-        "2.dsadasdasdasdsa",
-        "3.dsadasddsa",
-        "4.dsadsdsdsdsadsadasdsa"
+    std::cout << "Inserisci le stringhe (termina con una riga vuota):\n";
+    while(std::getline(std::cin, input) && !input.empty()){
+        v.push_back(input);
+    }
+
+    auto ten = [](const std::string& str){ // funzione lambda che restituisce un valore booleano se la lunghezza della stringa e' >10
+        return str.length() > 10;
     };
 
-    int i=count_if(v.begin(),v.end(),ten(v));
+    int i=count_if(v.begin(),v.end(),ten);
     std::cout<<i;
     
 

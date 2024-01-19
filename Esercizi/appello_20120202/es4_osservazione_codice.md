@@ -1,3 +1,6 @@
+
+### Osservazione codice (Polimorfismo)
+
 Una applicazione di rete prevede la gestione di sessioni di comunicazione di due tipologie distinte,
 ognuna caratterizzata da uno specifico protocollo di comunicazione. Siccome i due protocolli hanno
 alcune somiglianze (in termini di dati memorizzati e di operazioni di basso livello da eseguire),

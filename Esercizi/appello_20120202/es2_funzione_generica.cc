@@ -11,7 +11,7 @@
 
 template<typename Iter, typename Pred>
 typename std::iterator_traits<Iter>::difference_type
-    count_if(Iter first, Iter last, Pred pred)
+    count_if(Iter first, Iter last, Pred& pred)
 {
     typename std::iterator_traits<Iter>::difference_type count=0;
     for(; first!=last; ++first){

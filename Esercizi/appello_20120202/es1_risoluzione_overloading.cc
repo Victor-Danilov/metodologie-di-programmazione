@@ -46,8 +46,8 @@ int main(){
     B: cand: 7     util: nessuna migl: nessuna ; print di Derived non accessibile
     C: cand: 1,2   util: 1,2     migl: 1
     D: cand: 1,2,5 util: 1,2,5   migl: 5
-    E: cand: 1,2,5 util: 1,2,5   migl: ambiguo
+    E: cand: 1,2,5 util: 1,5   migl: ambiguo
     F: cand: 1,2,5 util: 2       migl: 2
     G: cand: 3,6   util: 6       migl: 6
-    H: cand: 3,6   util: 6       migl: 6
+    H: cand: 6     util: 6       migl: 6
 */

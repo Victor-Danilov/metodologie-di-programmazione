@@ -48,38 +48,71 @@ _______________________________________________________
 
 #### Risposta
 
-Per ottimizzare i protocolli delle classi derivate dovremmo rendere la classe base BasicProtocol virtuale pura.
-Inoltre sarebbe opportuno dichiarare virtuali anche i distruttori delle classi derivate.
+Per ottimizzare i protocolli delle classi derivate 
 ```c++
-    class BasicProtocol{
-    private:
-        /*...*/
+    #include <iostream>
+
+    // Classe astratta con un'interfaccia più chiara
+    class AbstractProtocol {
     public:
-        BasicProtocol();
-        virtual ~BasicProtocol();
-        virtual bool BasicMsgA(/*...*/) = 0;
-        virtual bool BasicMsgB(/*...*/) = 0;
-        virtual bool BasicMsgC(/*...*/) = 0;
-        virtual bool BasicMsgD(/*...*/) = 0;
-        virtual bool BasicMsgE(/*...*/) = 0;
-    };
-   class Protocol1 : public BasicProtocol{
-    public:
-        Protocol1();
-        virtual ~Protocol1();
-        bool BasicMsgA(/*...*/) override;
-        bool BasicMsgB(/*...*/) override;
-        bool BasicMsgC(/*...*/) override;
+        virtual ~AbstractProtocol() = default;
+        virtual void HandleMessage(/*...*/) = 0;
     };
 
-    class Protocol2 : public BasicProtocol{
+    // Classe di base condivisa
+    class BasicProtocol : public AbstractProtocol {
     public:
-        Protocol2();
-        virtual ~Protocol2();
-        bool BasicMsgA(/*...*/) override;
-        bool BasicMsgB(/*...*/) override;
-        bool BasicMsgC(/*...*/) override;
-        bool BasicMsgD(/*...*/) override;
-        bool BasicMsgE(/*...*/) override;
+        BasicProtocol() = default;
+        ~BasicProtocol() override = default;
+
+        // Alcuni metodi comuni
+        void CommonOperation(/*...*/) {
+            // Implementazione comune
+        }
+
+        // Override del metodo virtuale puro
+        void HandleMessage() override {
+            // Implementazione di base
+            CommonOperation();
+        }
     };
+
+    // Primo protocollo
+    class Protocol1 : public BasicProtocol {
+    public:
+        Protocol1() = default;
+        ~Protocol1() override = default;
+
+        void HandleMessage() override {
+            // Implementazione specifica di Protocol1
+            BasicProtocol::HandleMessage(); // Chiamata all'implementazione di base
+        }
+    };
+
+    // Secondo protocollo
+    class Protocol2 : public BasicProtocol {
+    public:
+        Protocol2() = default;
+        ~Protocol2() override = default;
+
+        void HandleMessage() override {
+            // Implementazione specifica di Protocol2
+            BasicProtocol::HandleMessage(); // Chiamata all'implementazione di base
+        }
+    };
+
+    int main() {
+        Protocol1 protocol1;
+        Protocol2 protocol2;
+
+        // Utilizzo generico attraverso l'interfaccia AbstractProtocol
+        AbstractProtocol* protocols[] = {&protocol1, &protocol2};
+
+        for (auto protocol : protocols) {
+            protocol->HandleMessage();
+        }
+
+        return 0;
+    }
+
 ```

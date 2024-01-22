@@ -32,3 +32,23 @@ print_count_if(Iter first, Iter last, Pred& pred){
     }
     return count;
 }
+
+template<typename Iter, typename OutIter, typename T>
+OutIter remove_copy(Iter first, Iter last, OutIter out, const T& value){
+    for(; first!=last ; ++first){
+        if(value!=*first){
+           *out++ = *first;
+        }
+    }
+    return out;
+}
+
+template<typename Iter, typename OutIter, typename Pred>
+OutIter remove_copy_if(Iter first, Iter last, OutIter out, Pred pred){
+    for(; first!=last ; ++first){
+        if(!(pred(*first))){
+           *out++ = *first;
+        }
+    }
+    return out;
+}
